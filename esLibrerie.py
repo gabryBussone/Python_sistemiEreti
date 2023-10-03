@@ -1,0 +1,1 @@
+import turtle #esempio di importazione di un modulo built - in 
