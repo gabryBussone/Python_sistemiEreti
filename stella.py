@@ -1,26 +1,35 @@
 import turtle
 
-# Ottieni il numero di punte dalla tastiera
+# inserisic il numero di punte
 n = int(input("Inserisci il numero di punte della stella: "))
 
-# Ottieni la lunghezza del lato dalla tastiera
+# inserisci la lunghezza del lato
 lunghezza_lato = float(input("Inserisci la lunghezza del lato della stella: "))
 
-# Impostazioni iniziali della tartaruga
-turtle.speed(1)
+finestra = turtle.Screen() #creazione finestra
 
-# Calcola l'angolo tra le punte della stella
+# cambia il colore della freccia
+turtle.color("black")  # Puoi sostituire "red" con il colore desiderato
+
+# velocità della turtle
+turtle.speed("slow")
+
+# calcolo angoloe
 angolo = 360 / n
 
-# Disegna la stella
-for _ in range(n):
-    turtle.forward(lunghezza_lato)  # Lunghezza delle punte della stella
-    turtle.right(180 - angolo)
-    turtle.forward(lunghezza_lato)  # Lunghezza della parte interna della stella
-    turtle.left(180 - angolo)
+# inizia il riempimento del poligono chiuso
+turtle.begin_fill()
 
-# Chiudi la finestra quando si fa clic su di essa
-turtle.exitonclick()
+# disegno stella
+for i in range(n):
+    turtle.forward(lunghezza_lato)  # disegna punte
+    turtle.right(angolo)  # angolo da girare
+    turtle.forward(lunghezza_lato)  # disegna lati parte interna
+    turtle.left(2 * angolo)  # angolo da girare
 
+turtle.color("yellow")
 
+# termina il riempimento del poligono chiuso
+turtle.end_fill()
 
+finestra.mainloop() #gestione finestra
