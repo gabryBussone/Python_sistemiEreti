@@ -1,21 +1,16 @@
-# chiedo un numero n compreso tra 1 e 31 che rappresenta una subnetmasck scritta in cdr e deve scriverlo in notazione decimale puntata
+def calculate_subnet_mask(cidr):
+ 
+    subnet_mask = "1" * cidr + "0" * (32 - cidr)
+    
+    octets = [subnet_mask[i:i + 8] for i in range(0, 32, 8)]
+    
+    decimal_octets = [str(int(octet, 2)) for octet in octets]
+    
+    subnet_mask_str = ".".join(decimal_octets)
+    
+    return subnet_mask_str
 
-def main():
-    sub=int(input("inserisci la subnet mask"))
-    print(sub)
-    subbin="1"*sub+"0"*(32-sub)
-    print(subbin)
-    group1=subbin[0:8]
-    group2=subbin[8:16]
-    group3=subbin[16:24]
-    group4=subbin[24:32]
-    group1=int(group1,2)
-    group2=int(group2,2)
-    group3=int(group3,2)
-    group4=int(group4,2)
-    ip=f"{group1}.{group2}.{group3}.{group4}"
-    print(ip)
-
-if __name__=="__main__":
-    main()
+cidr = 29 
+subnet_mask = calculate_subnet_mask(cidr)
+print("Subnet Mask:", subnet_mask)
 
