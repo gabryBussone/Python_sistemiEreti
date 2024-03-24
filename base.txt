@@ -1,0 +1,207 @@
+# Ciclo for con sequenza (lista)
+frutta = ["mela", "banana", "kiwi"]
+for frutto in frutta:
+    print(frutto)
+# Output: mela, banana, kiwi
+
+
+# Ciclo for con range()
+for i in range(5):
+    print(i)
+# Output: 0, 1, 2, 3, 4
+
+
+# Esempi di range()
+for numero in range(2, 8, 2):
+    print(numero)
+# Output: 2, 4, 6
+
+for numero in range(5, 1, -1):
+    print(numero)
+# Output: 5, 4, 3, 2
+
+frutta = ["mela", "banana", "kiwi"]
+for indice in range(len(frutta)):
+    print(f"Indice {indice}: {frutta[indice]}")
+# Output: Indice 0: mela, Indice 1: banana, Indice 2: kiwi
+
+__________________________________________________________________________________________________
+
+# Esempio di funzione che calcola la somma di due numeri
+def somma(a, b):
+    return a + b
+
+risultato = somma(3, 4)
+print(risultato)
+
+__________________________________________________________________________________________________
+
+# Slicing Base
+lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+sottolista = lista[2:7]  # Estrae elementi dall'indice 2 al 6
+print(sottolista)
+# Output: [2, 3, 4, 5, 6]
+
+# Slicing con Step
+lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+sottolista = lista[2:9:2]  # Estrae elementi dall'indice 2 al 8, saltando di 2
+print(sottolista)
+# Output: [2, 4, 6, 8]
+
+# Slicing da Inizio o Fino alla Fine
+lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+inizio_fino_a_5 = lista[:6]  # Da inizio fino all'indice 5 (escluso)
+dall_8_alla_fine = lista[8:]  # Dall'indice 8 fino alla fine
+print(inizio_fino_a_5)
+# Output: [0, 1, 2, 3, 4, 5]
+print(dall_8_alla_fine)
+# Output: [8, 9]
+
+# Slicing con Indici Negativi
+lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+ultimi_3 = lista[-3:]  # Ultimi 3 elementi
+print(ultimi_3)
+# Output: [7, 8, 9]
+
+# Slicing Invertito
+lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+inversa = lista[::-1]  # Sequenza invertita
+print(inversa)
+# Output: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+# Slicing su Stringhe
+stringa = "Hello, World!"
+sottostringa = stringa[7:12]  # Estrae "World"
+print(sottostringa)
+# Output: World
+
+__________________________________________________________________________________________________
+
+# Esempio di list comprehension per ottenere i quadrati dei numeri da 0 a 4
+quadrati = [x**2 for x in range(5)]
+print(quadrati)
+
+# List Comprehension Base
+numeri = [x for x in range(5)]
+# Equivalente a: numeri = [0, 1, 2, 3, 4]
+
+# List Comprehension con Condizione
+pari = [x for x in range(10) if x % 2 == 0]
+# Equivalente a: pari = [0, 2, 4, 6, 8]
+
+# List Comprehension con Espressione Condizionale
+risultati = ["Passato" if voto >= 60 else "Fallito" for voto in [75, 45, 90, 30]]
+# Equivalente a: risultati = ['Passato', 'Fallito', 'Passato', 'Fallito']
+
+# List Comprehension con Operazioni
+quadrati = [x**2 for x in range(5)]
+# Equivalente a: quadrati = [0, 1, 4, 9, 16]
+
+# List Comprehension Anidate
+matrice = [[i * j for j in range(3)] for i in range(4)]
+# Equivalente a: matrice = [[0, 0, 0], [0, 1, 2], [0, 2, 4], [0, 3, 6]]
+
+# Esempio di list comprehension per concatenare due liste
+lista1 = [1, 2, 3]
+lista2 = [4, 5, 6]
+concatenata = [x for lst in [lista1, lista2] for x in lst]
+print(concatenata)
+
+__________________________________________________________________________________________________
+
+# Esempio di scrittura su file
+with open("file.txt", "w") as f:
+    f.write("Questo è un esempio di scrittura su file.")
+
+__________________________________________________________________________________________________
+
+# Dizionario Base
+persona = {"nome": "Alice", "età": 25, "sesso": "F"}
+
+# Accesso ai Valori tramite Chiavi
+print(persona["nome"])
+# Output: Alice
+
+# Modifica di un Valore tramite Chiave
+persona["età"] = 26
+
+# Aggiunta di Nuove Coppie Chiave-Valore
+persona["occupazione"] = "Ingegnere"
+
+# Rimozione di una Coppia Chiave-Valore
+del persona["sesso"]
+
+# Iterazione sui Dizionari
+for chiave, valore in persona.items():
+    print(f"{chiave}: {valore}")
+
+# Verifica dell'Esistenza di una Chiave
+if "nome" in persona:
+    print("La chiave 'nome' esiste nel dizionario.")
+
+# Creazione di un Dizionario con dict()
+altro_dizionario = dict(nome="Bob", età=30, sesso="M")
+
+# Accesso Sicuro a un Valore con get()
+valore = persona.get("altezza", "Valore predefinito")
+
+# Creazione di Dizionari Anidati
+dizionario_anidato = {"persona": {"nome": "Carol", "età": 28}, "posizione": "Manager"}
+
+
+__________________________________________________________________________________________________
+
+# Esempio di dizionario di funzioni
+def somma(a, b):
+    return a + b
+
+def prodotto(a, b):
+    return a * b
+
+operazioni = {"somma": somma, "prodotto": prodotto}
+risultato = operazioni["somma"](3, 4)
+print(risultato)
+
+__________________________________________________________________________________________________
+
+# Esempio di una semplice implementazione di pila
+pila = []
+pila.append(1)
+pila.append(2)
+pila.append(3)
+elemento = pila.pop()
+print(elemento)
+
+__________________________________________________________________________________________________
+
+def controlla_parentesi(espressione):
+    pila = []
+    parentesi_validi = {'(': ')', '[': ']', '{': '}'}
+    
+    for carattere in espressione:
+        if carattere in parentesi_validi.keys():
+            pila.append(carattere)
+        elif carattere in parentesi_validi.values():
+            if not pila or carattere != parentesi_validi[pila.pop()]:
+                return False
+
+    return not pila
+
+# Test
+espressione = "{[()]}"
+print(controlla_parentesi(espressione))
+
+__________________________________________________________________________________________________
+
+# Esempio di classe
+class Automobile:
+    def __init__(self, modello, anno):
+        self.modello = modello
+        self.anno = anno
+
+    def informazioni(self):
+        print(f"{self.modello} - {self.anno}")
+
+# Creazione di un'istanza della classe
+auto = Automobile("Toyota", 2022)
+auto.informazioni()

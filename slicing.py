@@ -1,11 +1,32 @@
-# SCLICING DI STRINGHE
-s = "ciao come stai?"
-print(f"il primo carattere è {s[0]}")
-print(f"l'ultimo carattere è {s[-1]}")
-print(f"il penultimo carattere carattere è {s[-2]}")
-print(f"l'ultimo carattere carattere è {s[len(s) -1]}") #C -style DA NON USARE
+import cv2
 
-print(s[3:7]) # dal carattere 3 al carattere 7 escluso
-print(f"tutta la stringa esclusi il 1° e l'ultimo carattere: {s[1:-1]}")
-print(f"tutta la stringa escluso il 1° carattere: {s[1:]}")
-print(f"tutta la stringa escluso l'ultimo carattere: {s[:-1]}")
+# Carica il classificatore preaddestrato per il riconoscimento del corpo intero
+body_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fullbody.xml')
+
+# Inizializza il modulo di acquisizione video
+cap = cv2.VideoCapture(0)  # 0 indica la fotocamera predefinita
+
+while True:
+    # Leggi il frame dalla fotocamera
+    ret, frame = cap.read()
+
+    # Converti il frame in scala di grigi
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Rileva i corpi nel frame
+    bodies = body_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+
+    # Disegna i rettangoli intorno ai corpi rilevati
+    for (x, y, w, h) in bodies:
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+    # Mostra il frame con i rettangoli disegnati
+    cv2.imshow('Body Detection', frame)
+
+    # Interrompi il loop quando si preme 'q'
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Rilascia le risorse quando il programma termina
+cap.release()
+cv2.destroyAllWindows()

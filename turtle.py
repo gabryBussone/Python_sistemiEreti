@@ -23,7 +23,7 @@ def main():
         comandi.append((comando, valore))
 
     print_list(comandi)
-
+    
     turtle.speed(1)  # Imposta la velocità della turtle
     for comando, valore in comandi:
         if comando == 1:
