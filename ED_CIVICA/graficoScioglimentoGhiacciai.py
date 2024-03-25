@@ -1,20 +1,20 @@
 import csv
 import matplotlib.pyplot as plt
 
-# Inizializzazione delle liste per memorizzare i dati
+
 years = []
 cumulative_mass_variation = []
 
-# Lettura dei dati dal file CSV
+# lettura dei dati dal file CSV
 with open('datiGhiacciai.csv', newline='') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         year = int(row[0])
-        mass_variation = int(row[3])  # Consideriamo solo la variazione cumulativa della massa
+        mass_variation = int(row[3])  # considero solo la variazione cumulativa della massa
         years.append(year)
         cumulative_mass_variation.append(mass_variation)
 
-# Creazione del grafico
+# creazione del grafico
 plt.figure(figsize=(10, 6))
 plt.plot(years, cumulative_mass_variation, marker='o', color='b', linestyle='-')
 plt.title('Variazione Cumulativa della Massa dell\'Aria nel Tempo')
@@ -24,5 +24,5 @@ plt.grid(True)
 plt.xticks(rotation=45)
 plt.tight_layout()
 
-# Mostra il grafico
+# mostra il grafico
 plt.show()
